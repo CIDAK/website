@@ -3,10 +3,10 @@
 # base
 
 - [x] website ( Logo ) -> Dylan
-- [ ] Framework
-  - [ ] React, 
-    - [ ] jsx, 
-    - [ ] js, 
+- [x] Framework
+  - [x] React, 
+    - [x] jsx, 
+    - [x] js, 
     - [ ] (css and tailwind)
     - [ ] Contact form
   
