@@ -1,10 +1,8 @@
 import './App.css';
-import Sidebar from './components/sidebar/sidebar';
 
 function App() {
   return (
-    <div className="App" style={{ marginLeft: "220px" }}>
-      <Sidebar /> {/* I am adding the footer for us @ianthehamster */}
+    <div className="app-layout">
       <header className="App-header">
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -17,7 +15,7 @@ function App() {
         >
           Learn React
         </a>
-      </header> 
+      </header>
     </div>
   );
 }
