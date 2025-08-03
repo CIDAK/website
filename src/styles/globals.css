@@ -1,5 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+/* 
+@import "./colors.css";
+@import "./theme.css";
+@import "./base.css"; 
+*/
 
 @custom-variant dark (&:is(.dark *));
 
@@ -122,6 +127,7 @@
   }
 }
 
+/* Sidebar */
 @layer base {
   :root {
     --sidebar: oklch(0.985 0 0);
