@@ -1,30 +1,139 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  overflow: hidden;
+}
+
+.left-panel {
+  flex: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 4rem;
+  position: relative;
+}
+
+.content {
+  max-width: 300px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.contact {
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.vertical-divider {
+  width: 2px;
+  height: 100vh;
+  background-color: white;
+  flex-shrink: 0;
+}
+
+.vertical-divider-2 {
+  width: 2px;
+  height: 100vh;
+  background-color: white;
+  flex-shrink: 0;
+  margin-left: 0.3%;
+}
+
+
+.right-panel {
+  flex: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.ascii-container {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  line-height: 0.8;
+  white-space: pre;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.custom-underline {
+  border-bottom: none; /* No underline by default */
+  transition: border-bottom 0.3s ease; /* Smooth transition */
+}
+
+.custom-underline:hover {
+  border-bottom: 0.1px solid white;
+  cursor: pointer; 
+}
+
+.ascii-line {
+  width: 100%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@keyframes flicker {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+  
+  .vertical-divider {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+  }
+  .vertical-divider-2 {
+    display: none;
+  }
+  
+  .left-panel {
+    padding: 2rem;
+    flex: 0.8;
+  }
+
+  .right-panel {
+    flex: 1.2;
+  }
+  
+  .description,
+  .contact {
+    font-size: 14px;
+  }
+  
+  .ascii-container {
+    font-size: 6px;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
