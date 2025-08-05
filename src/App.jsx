@@ -1,4 +1,6 @@
 import './App.css';
+// import { generateAsciiArt, staticAsciiArt } from './ascii-art.js';
+// import { useState, useEffect } from 'react';
 
 function App() {
   return (
@@ -23,9 +25,11 @@ function App() {
       
       <div className="vertical-divider"></div>
       <div className="vertical-divider-2"></div>
-
+    
       <div className="right-panel">
+        {/* <AsciiAnimation /> */}
       </div>
+      import './App.css';
     </div>
   );
 };
