@@ -13,8 +13,8 @@ function About() {
         a better place. 
       </p>
       <p className="description">
-        See our <span className="custom-underline" onClick={() => window.open('https://github.com/CIDAK', '_blank')}>Github</span> or<br />
-        our <span className="custom-underline" onClick={() => window.open('https://www.linkedin.com', '_blank')}>LinkedIn</span> for more
+        See our <a href="https://github.com/CIDAK" className="custom-underline" target="_blank" rel="noopener noreferrer">GitHub</a> or<br />
+        our <a href="https://www.linkedin.com" className="custom-underline" target="_blank" rel="noopener noreferrer">LinkedIn</a> for more
       </p>
     </div>
   );

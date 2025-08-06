@@ -5,7 +5,7 @@ function Home() {
   return (
     <div className="content">
       <p className="description">
-        CIDAK is a <span className="custom-underline" onClick={() => window.open('https://london.ac.uk', '_blank')}>University of London's</span>
+        CIDAK is a <span className="custom-underline" onClick={() => window.open('https://london.ac.uk', '_blank')}>University of London </span>
         Computer Science society.
       </p>
       <p className="description">

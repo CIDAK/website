@@ -39,7 +39,7 @@
 .about-label {
   position: fixed;           
   top: 90%;                     
-  left: 8%;                  
+  left: 10%;                  
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
@@ -61,7 +61,7 @@
 .join-label {
   position: fixed;           
   top: 90%;                     
-  left: 14%;                  
+  left: 15%;                  
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
@@ -83,7 +83,7 @@
 .home-label {
   position: fixed;           
   top: 90%;                     
-  left: 8%;                  
+  left: 5%;                  
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
@@ -95,7 +95,7 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
   text-transform: uppercase;
-  z-index: 300;
+  z-index: 305;
 }
 
 .home-label:hover {
@@ -209,6 +209,21 @@
     left: 80%;
     top: 90%;
   }
+
+  .home-label {
+    left: 20%;
+    top: 90%;
+  }
+
+  .join-label {
+    left: 20%;
+    top: 80%;
+  }
+
+  .about-label {
+    left: 80%;
+    top: 80%;
+  }
   
   .vertical-divider {
     width: 100%;
@@ -236,4 +251,34 @@
   .ascii-container {
     font-size: 8px;
   }
+}
+
+@media (max-width: 400px) {
+  .home-label {
+    left: 20%;
+    top: 90%;
+  }
+
+  .join-label {
+    left: 20%;
+    top: 80%;
+  }
+
+  .about-label {
+    left: 80%;
+    top: 80%;
+  }
+
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (min-width: 481px) and (max-height: 480px) {
+
+}
+
+@media (min-width: 769px) and (max-width: 991px) {
+
 }
