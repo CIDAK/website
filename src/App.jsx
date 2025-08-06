@@ -25,7 +25,9 @@ function App() {
       
       <div className="vertical-divider"></div>
       <div className="vertical-divider-2"></div>
-    
+
+      <div class="cidak-label">CIDAK</div>
+
       <div className="right-panel">
         <AsciiAnimation />
       </div>
