@@ -1,9 +1,9 @@
-import './App.css';
-import { AsciiAnimation } from './AsciiAnimation';
-import { Routes, Route, Link } from 'react-router-dom';
-import About from './pages/about/About';
+import '../../App.css';
+import './About.css';
+import { AsciiAnimation } from '../../AsciiAnimation';
+import { Link } from 'react-router-dom';
 
-function Home() {
+function About() {
   return (
     <div className="app-layout">
       <div className="left-panel">
@@ -26,8 +26,9 @@ function Home() {
       <div className="vertical-divider"></div>
       <div className="vertical-divider-2"></div>
 
-      <div className="cidak-label">CIDAK</div>
-      <Link to='/about' className="about-label">ABOUT</Link>
+      <div className='cidak-label'>CIDAK</div>
+      <Link to='/' className="about-label">HOME</Link>
+      <Link to='/join' className="join-label">JOIN</Link>
 
       <div className="right-panel">
         <AsciiAnimation />
@@ -36,13 +37,4 @@ function Home() {
   );
 };
 
-function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-    </Routes>
-  );
-}
-
-export default App;
+export default About;
