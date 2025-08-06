@@ -7,12 +7,22 @@
   box-sizing: border-box;
 }
 
+:root {
+    --one: #1c9bf5;     
+    --two: #a03bf4;     
+    --three: #fd5e34;   
+    --four: #fcbf25;    
+    --five: #ff4cb6;    
+    --six: #ffffff; 
+    --seven: black; /* This is the main colour for us */    
+}
+
 .app-layout {
   display: flex;
   height: 100vh;
   width: 100vw;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--seven);
+  color: var(--six);
   font-family: 'JetBrains Mono', monospace;
   overflow: hidden;
 }
@@ -48,14 +58,14 @@
 .vertical-divider {
   width: 2px;
   height: 100vh;
-  background-color: white;
+  background-color: var(--six);
   flex-shrink: 0;
 }
 
 .vertical-divider-2 {
   width: 2px;
   height: 100vh;
-  background-color: white;
+  background-color: var(--six);
   flex-shrink: 0;
   margin-left: 0.3%;
 }
@@ -72,7 +82,7 @@
 
 .ascii-container {
   font-family: 'JetBrains Mono', monospace;
-  color: white;
+  color: var(--six);
   font-size: 8px;
   line-height: 0.8;
   white-space: pre;
@@ -92,7 +102,7 @@
 }
 
 .custom-underline:hover {
-  border-bottom: 0.1px solid white;
+  border-bottom: 0.1px solid var(--six);
   cursor: pointer; 
 }
 
@@ -114,7 +124,7 @@
   .vertical-divider {
     width: 100%;
     height: 2px;
-    background-color: white;
+    background-color: var(--six);
   }
   .vertical-divider-2 {
     display: none;
