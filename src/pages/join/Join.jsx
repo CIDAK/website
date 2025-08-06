@@ -1,5 +1,5 @@
 import '../../App.css';
-import './Join.css';
+import '../about/About.css';
 import { AsciiAnimation } from '../../AsciiAnimation';
 import { Link } from 'react-router-dom';
 
@@ -26,7 +26,10 @@ function Join() {
       <div className="vertical-divider"></div>
       <div className="vertical-divider-2"></div>
 
-      <Link to='/' className='cidak-label'>CIDAK</Link>
+      <div className='cidak-label'>CIDAK</div>
+
+      <Link to='/' className="about-label">HOME</Link>
+      <Link to='/about' className="join-label">ABOUT</Link>
 
       <div className="right-panel">
         <AsciiAnimation />

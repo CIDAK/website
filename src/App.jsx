@@ -2,6 +2,7 @@ import './App.css';
 import { AsciiAnimation } from './AsciiAnimation';
 import { Routes, Route, Link } from 'react-router-dom';
 import About from './pages/about/About';
+import Join from './pages/join/Join';
 
 function Home() {
   return (
@@ -41,6 +42,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
+      <Route path="/join" element={<About />} />
+
     </Routes>
   );
 }
