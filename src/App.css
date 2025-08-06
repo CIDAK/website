@@ -271,14 +271,6 @@
 
 }
 
-@media (max-width: 576px) {
-
-}
-
-@media (min-width: 481px) and (max-height: 480px) {
-
-}
-
 @media (min-width: 769px) and (max-width: 991px) {
   .home-label {
     left: 8%;
