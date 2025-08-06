@@ -72,6 +72,7 @@
 
 .ascii-container {
   font-family: 'JetBrains Mono', monospace;
+  color: white;
   font-size: 8px;
   line-height: 0.8;
   white-space: pre;
