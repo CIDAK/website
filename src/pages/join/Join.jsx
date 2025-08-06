@@ -1,41 +1,25 @@
 import '../../App.css';
-import '../about/About.css';
-import { AsciiAnimation } from '../../AsciiAnimation';
-import { Link } from 'react-router-dom';
 
 function Join() {
   return (
-    <div className="app-layout">
-      <div className="left-panel">
-        <div className="content">
-          <p className="description">
-            CIDAK is <span className="custom-underline" onClick={() => window.open('https://london.ac.uk', '_blank')}>University of London</span> Computer Science<br />
-            society.
-          </p>
-          <p className="description">
-            Our focus is to participate and<br />
-            win various hackathons. 
-          </p>
-          <p className="contact">
-            Dylan, Ian, Alex, Ken and Chey<br />
-            &gt; <a href="mailto:contact@cidak.co?subject=Hello from CIDAK website" className="custom-underline">contact@cidak.co</a>
-          </p>
-        </div>
-      </div>
-      
-      <div className="vertical-divider"></div>
-      <div className="vertical-divider-2"></div>
-
-      <div className='cidak-label'>CIDAK</div>
-
-      <Link to='/' className="about-label">HOME</Link>
-      <Link to='/about' className="join-label">ABOUT</Link>
-
-      <div className="right-panel">
-        <AsciiAnimation />
-      </div>
+    <div className="content">
+      <p className="description">
+        Want to join <span className="custom-underline">CIDAK</span>?<br />
+        We are always looking for talented members.
+      </p>
+      <p className="description">
+        To join, you'll need to:<br />
+        1. Complete our problem set challenge.<br />
+        2. Pass a second test with one of the team members.<br />
+      </p>
+      <p className="description">
+        Best of Luck #
+      </p>
+      <p className="contact">
+        &gt; <a href="/problem-set.pdf" className="custom-underline">Download Problem Set</a><br />
+      </p>
     </div>
   );
-};
+}
 
 export default Join;

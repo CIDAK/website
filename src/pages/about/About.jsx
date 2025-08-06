@@ -1,40 +1,23 @@
 import '../../App.css';
-import './About.css';
-import { AsciiAnimation } from '../../AsciiAnimation';
-import { Link } from 'react-router-dom';
 
 function About() {
   return (
-    <div className="app-layout">
-      <div className="left-panel">
-        <div className="content">
-          <p className="description">
-            CIDAK is <span className="custom-underline" onClick={() => window.open('https://london.ac.uk', '_blank')}>University of London</span> Computer Science<br />
-            society.
-          </p>
-          <p className="description">
-            Our focus is to participate and<br />
-            win various hackathons. 
-          </p>
-          <p className="contact">
-            Dylan, Ian, Alex, Ken and Chey<br />
-            &gt; <a href="mailto:contact@cidak.co?subject=Hello from CIDAK website" className="custom-underline">contact@cidak.co</a>
-          </p>
-        </div>
-      </div>
-      
-      <div className="vertical-divider"></div>
-      <div className="vertical-divider-2"></div>
-
-      <div className='cidak-label'>CIDAK</div>
-      <Link to='/' className="about-label">HOME</Link>
-      <Link to='/join' className="join-label">JOIN</Link>
-
-      <div className="right-panel">
-        <AsciiAnimation />
-      </div>
+    <div className="content">
+      <p className="description">
+        CIDAK members are from around the world. Locations such as
+        Singapore, South Africa, Brazil, United States and England.
+      </p>
+      <p className="description">
+        We are a group of talented<br />
+        individuals who strive to make the world 
+        a better place. 
+      </p>
+      <p className="description">
+        See our <span className="custom-underline" onClick={() => window.open('https://github.com/CIDAK', '_blank')}>Github</span> or<br />
+        our <span className="custom-underline" onClick={() => window.open('https://www.linkedin.com', '_blank')}>LinkedIn</span> for more
+      </p>
     </div>
   );
-};
+}
 
 export default About;
