@@ -280,5 +280,35 @@
 }
 
 @media (min-width: 769px) and (max-width: 991px) {
+  .home-label {
+    left: 8%;
+    top: 90%;
+  }
 
+  .join-label {
+    left: 18%;
+    top: 90%;
+  }
+
+  .about-label {
+    left: 28%;
+    top: 90%;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1024px) {
+  .home-label {
+    left: 8%;
+    top: 90%;
+  }
+
+  .join-label {
+    left: 18%;
+    top: 90%;
+  }
+
+  .about-label {
+    left: 28%;
+    top: 90%;
+  }
 }
