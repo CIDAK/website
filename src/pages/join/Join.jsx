@@ -16,7 +16,7 @@ function Join() {
         Best of Luck #
       </p>
       <p className="contact">
-        &gt; <a href="/problem-set.pdf" className="custom-underline">Download Problem Set</a><br />
+        &gt; <a href={`/problem-set.pdf?v=${Date.now()}`} download className="custom-underline">Download Problem Set</a><br />
       </p>
     </div>
   );
