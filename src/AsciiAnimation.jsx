@@ -117,7 +117,7 @@ export const AsciiAnimation = () => {
         clearTimeout(animationId);
       }
     };
-  }, [dimensions, waveChars],);
+  }, [dimensions]);
   
   return (
     <pre 
