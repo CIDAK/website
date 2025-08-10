@@ -14,7 +14,7 @@ function About() {
       </p>
       <p className="description">
         See our <a href="https://github.com/CIDAK" className="custom-underline" target="_blank" rel="noopener noreferrer">GitHub</a> or<br />
-        our <a href="https://www.linkedin.com" className="custom-underline" target="_blank" rel="noopener noreferrer">LinkedIn</a> for more
+        our <a href="https://www.linkedin.com/company/cidak" className="custom-underline" target="_blank" rel="noopener noreferrer">LinkedIn</a> for more
       </p>
     </div>
   );
