@@ -12,7 +12,7 @@ function Home() {
         winning various hackathons.
       </p>
       <p className="contact">
-        Dylan, Ian, Alex, Ken and Chey<br />
+        Chey, Ian, Dylan, Alex and Ken<br />
         &gt; <a href="mailto:contact@cidak.co?subject=Hello from CIDAK website" className="custom-underline">contact@cidak.co</a>
       </p>
     </div>
