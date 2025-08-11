@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
+const Wave_Char = [' ', '.', ':', '-', '=', '+', '*', '#', '@'];
+
 export const AsciiAnimation = () => {
   const [displayed, setDisplayed] = useState('');
   const [dimensions, setDimensions] = useState({ width: 80, height: 40 });
   const containerRef = useRef(null);
-  const waveChars = [' ', '.', ':', '-', '=', '+', '*', '#', '@'];
   
   // Function to calculate how many characters fit in the container
   const calculateDimensions = () => {
@@ -96,10 +97,10 @@ export const AsciiAnimation = () => {
           
           // Convert the continuous wave value to discrete character indices
           const normalized = (waveValue + amplitude * damping) / (2 * amplitude * damping + 0.001);
-          const charIndex = Math.floor(normalized * (waveChars.length - 1));
-          const safeIndex = Math.max(0, Math.min(waveChars.length - 1, charIndex));
+          const charIndex = Math.floor(normalized * (Wave_Char.length - 1));
+          const safeIndex = Math.max(0, Math.min(Wave_Char.length - 1, charIndex));
           
-          newDisplay += waveChars[safeIndex];
+          newDisplay += Wave_Char[safeIndex];
         }
         newDisplay += '\n';
       }
