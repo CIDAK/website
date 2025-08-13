@@ -24,13 +24,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Ensure CNAME is present
       - name: Add CNAME file
-        run: echo "cidak.co" > ./CNAME
+        run: echo "cidak.co" > ./public/CNAME
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./
+          path: ./public
 
       - name: Deploy to GitHub Pages
         id: deployment
