@@ -6,6 +6,7 @@ const Wave_Char = [' ', '.', ':', '-', '=', '+', '*', '#', '@'];
 export const AsciiAnimation = () => {
   const [displayed, setDisplayed] = useState('');
   const [dimensions, setDimensions] = useState({ width: 80, height: 40 });
+  const [isReady, setIsReady] = useState(false);
   const containerRef = useRef(null);
   
   // Function to calculate how many characters fit in the container
@@ -14,6 +15,11 @@ export const AsciiAnimation = () => {
     
     // Get the actual container size in pixels
     const containerRect = containerRef.current.getBoundingClientRect();
+    
+    // Don't calculate if container has no size yet
+    if (containerRect.width === 0 || containerRect.height === 0) {
+      return;
+    }
     
     // Create a temporary element to measure character size
     const testElement = document.createElement('span');
@@ -36,19 +42,35 @@ export const AsciiAnimation = () => {
     
     // Update dimensions with some padding to ensure it fits nicely
     setDimensions({
-      width: Math.max(0, cols ), 
-      height: Math.max(0, rows )
+      width: Math.max(0, cols), 
+      height: Math.max(0, rows)
     });
+    
+    setIsReady(true);
   };
   
-  // Effect to handle window resizing
+  // Effect to handle window resizing and initial load
   useEffect(() => {
-    // Calculate initial dimensions
-    const initialCalculation = () => {
-      setTimeout(calculateDimensions, 100); // Small delay to ensure rendering is complete
+    // Wait for fonts and CSS to load
+    const initializeAfterLoad = () => {
+      // Check if fonts are loaded
+      if (document.fonts) {
+        document.fonts.ready.then(() => {
+          setTimeout(calculateDimensions, 120); // Longer delay for initial load
+        });
+      } else {
+        // Fallback for older browsers
+        setTimeout(calculateDimensions, 500);
+      }
     };
     
-    initialCalculation();
+    // Check if document is already loaded
+    if (document.readyState === 'complete') {
+      initializeAfterLoad();
+    } else {
+      // Wait for window load event
+      window.addEventListener('load', initializeAfterLoad);
+    }
     
     // Recalculate on window resize
     const handleResize = () => {
@@ -59,11 +81,16 @@ export const AsciiAnimation = () => {
     
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('load', initializeAfterLoad);
     };
   }, []);
   
-  // Main animation effect
+  // Main animation effect - only start when ready
   useEffect(() => {
+    if (!isReady || dimensions.width === 0 || dimensions.height === 0) {
+      return;
+    }
+    
     let frameCount = 0;
     let animationId;
     
@@ -71,7 +98,7 @@ export const AsciiAnimation = () => {
       frameCount++;
       
       // Convert frame count to time - this drives our wave motion
-      const t = frameCount * 0.05; // Slightly faster animation
+      const t = frameCount * 0.60; // Slightly faster animation
       
       // Calculate the center of our dynamic grid
       const centerX = dimensions.width / 25;
@@ -86,7 +113,7 @@ export const AsciiAnimation = () => {
           const r = Math.sqrt((x + centerX)**2 + (y - centerY)**2);
           
           // Ripple parameters - these control the wave behavior
-          const amplitude = 3; 
+          const amplitude = 20; 
           const waveNumber = 0.20; 
           const frequency = 0.3; 
           const dampingRate = 0.04; 
@@ -118,7 +145,7 @@ export const AsciiAnimation = () => {
         clearTimeout(animationId);
       }
     };
-  }, [dimensions]);
+  }, [dimensions, isReady]);
   
   return (
     <pre 
