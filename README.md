@@ -18,5 +18,5 @@ To deploy the website, youll need to do the following:
 
 from here it will showcase a build folder
 
-// * note still need to work from here
+
 
