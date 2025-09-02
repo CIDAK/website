@@ -1,6 +1,6 @@
 import { Outlet, Link } from 'react-router-dom';
 import '../../App.css';
-import { AsciiAnimation } from '../../AsciiAnimation';
+import { AsciiAnimation } from '../../cidak-ascii/AsciiAnimation';
 
 function Layout() {
   return (
