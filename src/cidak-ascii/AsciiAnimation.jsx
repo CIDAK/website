@@ -1,63 +1,67 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import '../App.css';
 
-/**
- * AsciiAnimation
- * - Measures the <pre> container to compute a character grid (cols x rows)
- * - Runs a simple animation loop that updates the displayed ASCII text
- * - Uses a ref so measurements happen against the real DOM element
- */
 export const AsciiAnimation = () => {
   const [displayed, setDisplayed] = useState('');
   const [dimensions, setDimensions] = useState({ width: 80, height: 40 });
-  const [isReady, setIsReady] = useState(false); // isReady: becomes true after we successfully measure the container
+  const [isReady, setIsReady] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef(null);
 
-  const calculateDimensions = () => {
+  // Check if device is mobile
+  const checkIfMobile = () => {
+    const mobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    setIsMobile(mobile);
+  };
+
+  // Wrap calculateDimensions in useCallback
+  const calculateDimensions = useCallback(() => {
     const el = containerRef.current;
     if (!el) return;
 
     const rect = el.getBoundingClientRect();
     if (rect.width === 0 || rect.height === 0) return;
+    
     const span = document.createElement('span');
     span.style.font = getComputedStyle(el).font;
-    // span.style.color = '';
     span.style.visibility = 'hidden';
     span.style.position = 'absolute';
-    span.textContent = 'M'; // Wide glyph for measurement
+    span.textContent = 'M';
     document.body.appendChild(span);
-
 
     const charWidth = span.offsetWidth; 
     const charHeight = span.offsetHeight;
     document.body.removeChild(span);
 
-    // Computes how many chars fit; floor to ensure => ensure that there is no overflow
-    const cols = Math.max(1, Math.floor(rect.width / charWidth));
-    const rows = Math.max(1, Math.floor(rect.height / charHeight));
+    // For mobile, add extra padding and allow overflow
+    const padding = isMobile ? 5 : 0;
+    const cols = Math.max(1, Math.floor(rect.width / charWidth) + padding);
+    const rows = Math.max(1, Math.floor(rect.height / charHeight) + padding);
 
     setDimensions({ width: cols, height: rows });
     setIsReady(true);
-  };
+  }, [isMobile, containerRef]);
 
   useEffect(() => {
+    checkIfMobile();
+    
     const initialize = () => {
       if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(() => setTimeout(calculateDimensions, 120));
       } else {
-        setTimeout(calculateDimensions, 200);       // @DylanPrinsloo if conservative delay, please let layout settle
+        setTimeout(calculateDimensions, 200);
       }
     };
 
-    if (document.readyState === 'complete') { // @DylanPrinsloo if page already loaded, initialize immediately
+    if (document.readyState === 'complete') {
       initialize();
     } else {
       window.addEventListener('load', initialize);
     }
 
-    // Recalculate after resize (debounced with small timeout, minimizes requests, Helps with lower end devices)
     let resizeTimer = null;
     const handleResize = () => {
+      checkIfMobile();
       if (resizeTimer) clearTimeout(resizeTimer);
       resizeTimer = setTimeout(calculateDimensions, 80);
     };
@@ -68,16 +72,7 @@ export const AsciiAnimation = () => {
       window.removeEventListener('load', initialize);
       if (resizeTimer) clearTimeout(resizeTimer);
     };
-  }, []);
-
-    //  ___________________________________________________________
-    //    ____ ___ ____    _    _   __                            |
-    //   / ___|_ _|  _ \  / \  | \_/ /                            |
-    //  | |    | || | | |/ _ \ |    /                             |
-    //  | |___ | || |_| / ___ \|  _ \                             |  
-    //   \____|___|____/_/   \_\_/ \_\                            |
-    //                                       - cidak.co           |
-    // ___________________________________________________________|
+  }, [isMobile, calculateDimensions]); // <-- Add calculateDimensions here
 
   useEffect(() => {
     if (!isReady || dimensions.width <= 0 || dimensions.height <= 0) return;
@@ -88,33 +83,30 @@ export const AsciiAnimation = () => {
 
     const renderFrame = () => {
       frame++;
-      const t = frame * 0.10; // time factor to control speed
+      // Slower animation on mobile devices
+      const timeSpeed = isMobile ? 0.10 : 0.15;
+      const t = frame * timeSpeed;
 
       let out = '';
       for (let y = 0; y < dimensions.height; y++) {
         for (let x = 0; x < dimensions.width; x++) {
 
-          // Center the coordinates
           const nx = (x / dimensions.width) - 0;
           const ny = (y / dimensions.height) - 0.5;
           
-          // Convert to polar coordinates
           const r = Math.sqrt(nx * nx + ny * ny);
           const angle = Math.atan2(ny, nx);
           
-          // Flower parameters
           const petalCount = 12;
           const frequency = 9;
           const pulsing = 1 + 0.4 * Math.sin(t * 1.5);
           
-          // Create flower pattern
           const petals = Math.sin(angle * petalCount);
           const rings = Math.cos(r * frequency * pulsing - t);
-          const fade = Math.exp(-r * 0.5); // fade outward
+          const fade = Math.exp(-r * 0.5);
           
           const v = petals * rings * fade;
 
-          // Map v to a small set of ASCII density chars
           const charset = ' ._:+=#@%$';
           const idx = Math.floor(((v + 1) / 2) * (charset.length - 1));
           out += charset[Math.max(0, Math.min(charset.length - 1, idx))];
@@ -124,9 +116,10 @@ export const AsciiAnimation = () => {
 
       setDisplayed(out);
 
-      // schedule next frame
       if (!running) return;
-      timerId = setTimeout(renderFrame, 1000 / 500);
+      // Slower frame rate on mobile to improve performance
+      const frameRate = isMobile ? 1000 / 15 : 1000 / 500;
+      timerId = setTimeout(renderFrame, frameRate);
     };
 
     renderFrame();
@@ -135,7 +128,7 @@ export const AsciiAnimation = () => {
       running = false;
       if (timerId) clearTimeout(timerId);
     };
-  }, [dimensions, isReady]); // re-run when dimensions change
+  }, [dimensions, isReady, isMobile]);
 
   // Render the ASCII inside a <pre>. The containerRef is used for sizing.
   return (
