@@ -5,16 +5,23 @@ function Join() {
 
   return (
     <div className="page-root">
-      <main className="letter shadowed">
+      {/* Decorative halftone accents */}
+      <div className="halftone-accent halftone-accent--top-left" />
+      <div className="halftone-accent halftone-accent--bottom-right" />
+      
+      {/* Floating geometric shapes */}
+      <div className="geo-shape geo-shape--triangle" />
+      <div className="geo-shape geo-shape--square" />
+
+      <main className="letter">
         <header className="letter-header">
-          <div>
-            <div className="letter-pill">#</div>
-          </div>
+          <div className="letter-title">JOIN</div>
+          <div className="letter-pill">APPLY</div>
         </header>
 
         <section className="letter-body">
           <p>
-            Joining the group starts with a small problem set. It is designed to
+            <strong>Joining the group starts with a small problem set.</strong> It is designed to
             be straightforward but unforgiving: we care more about how you think
             than how many tools you know.
           </p>
@@ -29,26 +36,26 @@ function Join() {
 
         <footer className="letter-footer">
           <div className="letter-tagline">
-            &gt; When you are ready, send your solutions to{' '}
+            <span style={{ opacity: 0.6 }}>&gt;</span> When you are ready, send your solutions to{' '}
             <a
               href="mailto:contact@cidak.co?subject=CIDAK problem set submission"
               className="custom-underline"
             >
               contact@cidak.co
             </a>
-            <span className="code-chip" style={{ marginLeft: '0.35rem' }}>pset</span>
+            <span className="code-chip" style={{ marginLeft: '0.5rem' }}>pset</span>
           </div>
 
           <div className="button-row">
             <a
               href={problemSetHref}
               download
-              className="ghost-button shadowed"
+              className="ghost-button"
             >
-              <span>Download problem set</span>
+              <span>Download Problem Set</span>
             </a>
-            <a href="/" className="ghost-button shadowed">
-              <span>Back to home</span>
+            <a href="/" className="ghost-button" style={{ background: 'transparent' }}>
+              <span>Back Home</span>
             </a>
           </div>
         </footer>
