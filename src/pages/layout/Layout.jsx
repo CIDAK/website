@@ -1,6 +1,5 @@
 import { Outlet, Link } from 'react-router-dom';
 import '../../App.css';
-import { AsciiAnimation } from '../../cidak-ascii/AsciiAnimation';
 
 function Layout() {
   return (
@@ -16,12 +15,7 @@ function Layout() {
 
       <Link to='/'      className='cidak-label'>CIDAK</Link>
       <Link to='/'      className='home-label'>HOME</Link>
-      <Link to='/about' className='about-label'>ABOUT</Link>
       <Link to='/join'  className='join-label'>JOIN</Link>
-
-      <div className="right-panel">
-        <AsciiAnimation />
-      </div>
     </div>
   );
 }
