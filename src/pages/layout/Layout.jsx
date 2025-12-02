@@ -3,7 +3,17 @@ import '../../App.css';
 
 function Layout() {
   return (
-    <Outlet />
+    <>
+      <Outlet />
+      <a
+        href="https://www.linkedin.com/company/cidak"
+        target="_blank"
+        rel="noreferrer"
+        className="social-icon social-icon-linkedin"
+      >
+        in
+      </a>
+    </>
   );
 }
 

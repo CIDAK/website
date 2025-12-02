@@ -9,7 +9,6 @@ function App() {
       <Route path="/" element={<Layout />}>
         {/* Index route means path="/" */}
         <Route index element={<Home />} />
-        <Route path="home" element={<Home />} />
         <Route path="join" element={<Join />} />
       </Route>
     </Routes>

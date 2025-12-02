@@ -7,15 +7,16 @@ function Join() {
     <div className="page-root">
       <main className="letter shadowed">
         <header className="letter-header">
-          <h1 className="letter-title">CIDAK / Join</h1>
-          <span className="letter-meta">Entry via problem set</span>
+          <div>
+            <div className="letter-pill">#</div>
+          </div>
         </header>
 
         <section className="letter-body">
           <p>
-            Joining <span className="custom-underline">CIDAK</span> starts with a small
-            problem set. It is designed to be straightforward but unforgiving:
-            we care more about how you think than how many tools you know.
+            Joining the group starts with a small problem set. It is designed to
+            be straightforward but unforgiving: we care more about how you think
+            than how many tools you know.
           </p>
           <p>
             Solve the tasks on your own, write code you are happy to defend,
@@ -35,6 +36,7 @@ function Join() {
             >
               contact@cidak.co
             </a>
+            <span className="code-chip" style={{ marginLeft: '0.35rem' }}>pset</span>
           </div>
 
           <div className="button-row">

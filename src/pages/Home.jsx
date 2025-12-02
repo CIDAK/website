@@ -5,12 +5,14 @@ function Home() {
     <div className="page-root">
       <main className="letter shadowed">
         <header className="letter-header">
-          <h1 className="letter-title">CIDAK</h1>
+          <div>
+            <div className="letter-pill">#</div>
+          </div>
         </header>
 
         <section className="letter-body">
           <p>
-            CIDAK is for people who
+            This is for people who
             like building things that do not exist yet.
           </p>
           <p>
@@ -42,7 +44,7 @@ function Home() {
               href="/join"
               className="ghost-button shadowed"
             >
-              <span>Join CIDAK</span>
+              <span>Join</span>
             </a>
           </div>
         </footer>
